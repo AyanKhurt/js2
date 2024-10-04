@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form with List and Reset</title>
+</head>
+<body>
+
+    <form onsubmit="handleclick()">
+        <input type="text" id="userinput" placeholder="Enter a value" required>
+        <button type="submit" onclick="handleclick()">Add</button>
+        <button onclick="resetList()">Reset</button>
+    </form>
+
+    <ul id="itemList"></ul>
+
+    <script>
+        let emptyArray = [];
+
+        function handleclick() {
+
+            let userInput = document.getElementById("userinput").value;
+
+            emptyArray.push(userInput);
+
+            document.getElementById("userinput").value = '';
+
+            let listItems = '';
+
+            for (let i = 0; i < emptyArray.length; i++) {
+                listItems += `<li>${emptyArray[i]}</li>`;
+            }
+
+            document.getElementById("itemList").innerHTML = listItems;
+        }
+
+        function resetList() {
+            emptyArray = [];
+            document.getElementById("itemList").innerHTML = '';
+        }
+    </script>
+</body>
+</html>
